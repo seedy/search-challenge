@@ -31,15 +31,15 @@ const CatalogButton = ({ item }: CatalogButtonProps) => {
   if (count > 0) {
     return (
       <Flex align="center" gap={1}>
-        <ButtonMinus size="small" onClick={onMinus} />
+        <ButtonMinus variant="primary" size="small" onClick={onMinus} />
         <Input size="small" type="number" value={count} onChange={onChange} />
-        <ButtonPlus size="small" onClick={onPlus} />
+        <ButtonPlus variant="primary" size="small" onClick={onPlus} />
       </Flex>
     );
   }
   return (
     <Flex align="center">
-      <ButtonPlus onClick={onPlus} />
+      <ButtonPlus variant="primary" onClick={onPlus} />
     </Flex>
   );
 };
