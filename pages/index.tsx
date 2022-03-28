@@ -3,6 +3,7 @@ import Head from "next/head";
 import Catalog from "../components/Catalog";
 import CatalogButton from "../components/Catalog/Button";
 import CatalogItem from "../components/Catalog/Item";
+import CatalogSearch from "../components/Catalog/Search";
 import fetcher from "../utils/fetcher";
 
 const Home: NextPage<{ items: Catalog.ProductName[] }> = ({ items }) => {
@@ -15,6 +16,7 @@ const Home: NextPage<{ items: Catalog.ProductName[] }> = ({ items }) => {
       </Head>
 
       <main>
+        <CatalogSearch />
         <Catalog>
           {items.map((item) => (
             <CatalogItem key={item} name={item}>
