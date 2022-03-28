@@ -6,14 +6,31 @@ const Button = styled("button", {
   alignItems: "center",
   justifyContent: "center",
   border: "transparent",
-  backgroundColor: "$blue9",
-  color: "white",
   borderRadius: "$1",
   padding: "$2",
-  "&:hover,&:focus,&:active": {
-    backgroundColor: "$blue10",
-  },
   variants: {
+    variant: {
+      primary: {
+        backgroundColor: "$blue9",
+        color: "white",
+        "&:hover,&:focus,&:active": {
+          backgroundColor: "$blue10",
+        },
+        "&:disabled": {
+          backgroundColor: "$blackA10",
+        },
+      },
+      ghost: {
+        backgroundColor: "transparent",
+        color: "$blue9",
+        "&:hover,&:focus,&:active": {
+          color: "$blue10",
+        },
+        "&:disabled": {
+          color: "$blackA10",
+        },
+      },
+    },
     size: {
       small: {
         padding: "$1",

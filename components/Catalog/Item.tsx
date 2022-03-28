@@ -59,7 +59,7 @@ const CatalogItem = ({
         gap={1}
         css={{
           paddingBottom: "$3",
-          boxShadow: "0 1px 1px -1px $colors$gray8",
+          boxShadow: "0 1px 1px -1px $colors$gray9",
         }}
       >
         <Flex grow={1} direction="column">

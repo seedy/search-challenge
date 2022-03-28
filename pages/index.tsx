@@ -1,11 +1,22 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useMemo } from "react";
 import Catalog from "../components/Catalog";
 import CatalogButton from "../components/Catalog/Button";
 import CatalogItem from "../components/Catalog/Item";
+import CatalogSearch from "../components/Catalog/Search";
+import useSearch from "../hooks/useSearch";
 import fetcher from "../utils/fetcher";
+import searchFilter from "../utils/searchFilter";
 
 const Home: NextPage<{ items: Catalog.ProductName[] }> = ({ items }) => {
+  const search = useSearch();
+
+  const searchFilteredItems = useMemo(
+    () => searchFilter(items, search),
+    [items, search]
+  );
   return (
     <>
       <Head>
@@ -15,8 +26,9 @@ const Home: NextPage<{ items: Catalog.ProductName[] }> = ({ items }) => {
       </Head>
 
       <main>
+        <CatalogSearch />
         <Catalog>
-          {items.map((item) => (
+          {searchFilteredItems.map((item) => (
             <CatalogItem key={item} name={item}>
               <CatalogButton item={item} />
             </CatalogItem>
