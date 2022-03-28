@@ -1,12 +1,13 @@
 import Flex from "../Flex";
 import Avatar from "../Avatar";
-import { useMemo } from "react";
+import { ReactNode, useMemo } from "react";
 import { styled } from "../../stitches.config";
 
 interface CatalogItemProps {
   name: Catalog.ProductName;
   price?: string;
   amount?: string;
+  children?: ReactNode;
 }
 
 const ItemTitle = styled("span", {
@@ -31,6 +32,7 @@ const CatalogItem = ({
   name,
   price = "1.40 €",
   amount = "500 ml",
+  children,
 }: CatalogItemProps) => {
   const fallbackText = useMemo(() => {
     // @FIXME optimize algo
@@ -54,17 +56,20 @@ const CatalogItem = ({
       <Avatar fallbackText={fallbackText} />
       <Flex
         grow={1}
-        direction="column"
+        gap={1}
         css={{
           paddingBottom: "$3",
           boxShadow: "0 1px 1px -1px $colors$gray8",
         }}
       >
-        <ItemTitle>{name}</ItemTitle>
-        <Flex gap={1}>
-          <Price>{price}</Price>
-          <Amount>({amount})</Amount>
+        <Flex grow={1} direction="column">
+          <ItemTitle>{name}</ItemTitle>
+          <Flex gap={1}>
+            <Price>{price}</Price>
+            <Amount>({amount})</Amount>
+          </Flex>
         </Flex>
+        {children}
       </Flex>
     </Flex>
   );

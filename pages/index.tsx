@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Catalog from "../components/Catalog";
+import CatalogButton from "../components/Catalog/Button";
 import CatalogItem from "../components/Catalog/Item";
 import fetcher from "../utils/fetcher";
 
@@ -14,13 +15,11 @@ const Home: NextPage<{ items: Catalog.ProductName[] }> = ({ items }) => {
       </Head>
 
       <main>
-        <h1>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
         <Catalog>
           {items.map((item) => (
-            <CatalogItem key={item} name={item} />
+            <CatalogItem key={item} name={item}>
+              <CatalogButton item={item} />
+            </CatalogItem>
           ))}
         </Catalog>
       </main>
